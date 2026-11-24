@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+         https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <servlet>
+        <servlet-name>FormServlet</servlet-name>
+        <servlet-class>FormServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>LoginServlet</servlet-class>
+    </servlet>
+    
+     <servlet>
+        <servlet-name>ReadCookie</servlet-name>
+        <servlet-class>ReadCookie</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VisitCounter</servlet-name>
+        <servlet-class>VisitCounter</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowSession</servlet-name>
+        <servlet-class>ShowSession</servlet-class>
+    </servlet>
+
+    
+
+    <servlet>
+        <servlet-name>BirthdaySession</servlet-name>
+        <servlet-class>BirthdaySession</servlet-class>
+    </servlet>
+
+     <servlet-mapping>
+        <servlet-name>BirthdaySession</servlet-name>
+        <url-pattern>/BirthdaySession</url-pattern>
+        
+    </servlet-mapping>
+     
+
+
+    
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+        
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>FormServlet</servlet-name>
+        <url-pattern>/FormServlet</url-pattern>
+        <url-pattern>/Form_Servlet</url-pattern>
+
+    </servlet-mapping>
+
+    
+    
+    <servlet-mapping>
+        <servlet-name>ReadCookie</servlet-name>
+        <url-pattern>/ReadCookie</url-pattern>
+
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>VisitCounter</servlet-name>
+        <url-pattern>/VisitCounter</url-pattern>
+
+    </servlet-mapping>
+
+     <servlet-mapping>
+        <servlet-name>ShowSession</servlet-name>
+        <url-pattern>/ShowSession</url-pattern>
+
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>LoggingFilter</filter-name>
+        <filter-class>LoggingFilter</filter-class>
+
+        <init-param>
+            <param-name>logPrefix</param-name>
+            <param-value>[LOG]</param-value>
+        </init-param>
+    </filter>
+
+    <filter>
+        <filter-name>SecurityFilter</filter-name>
+        <filter-class>SecurityFilter</filter-class>
+    </filter>
+<!--
+j'ai testé ici le filter mapping dans l'ordre suivant : login puis sécurité 
+L'exécution est faite parfaitement 
+je vais testé l'ordre inverse 
+    <filter-mapping>
+        <filter-name>LoggingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>/ListItems</url-pattern>
+    </filter-mapping>
+-->
+
+<filter-mapping>
+    <filter-name>SecurityFilter</filter-name>
+    <url-pattern>/ListItems</url-pattern>
+</filter-mapping>
+
+<filter-mapping>
+    <filter-name>LoggingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
+
+
+
+<listener>
+    <listener-class>ApplicationListener</listener-class>
+</listener>
+
+
+</web-app>
